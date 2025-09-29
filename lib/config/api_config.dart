@@ -3,7 +3,7 @@
 /// ✅ แก้ให้ตรงกับโครงสร้างไฟล์จริงทั้งหมด
 class ApiConfig {
   // Base URL หลักของ API
-  static const String _baseUrl = 'https://api-pill-reminder.coecore.com/api';
+  static const String _baseUrl = 'YOUR_API_BASE_URL';
   static String get baseUrl => _baseUrl;
 
   // ==================== Authentication APIs ====================

@@ -20,7 +20,7 @@
 - **ความถี่แจ้งเตือน** - ตั้งค่าความถี่ในการแจ้งเตือน
 
 ### 📊 การรายงาน
-- **สถิติการทานยา** - ดูสรุปการทานยารายวัน/สัปดาห์/เดือน
+- **สถิติการทานยา** - ดูสรุปการทานยาตามสัปดาห์/เดือน
 - **อัตราความสำเร็จ** - ติดตามอัตราการปฏิบัติตามแผน
 - **ประวัติรายละเอียด** - ดูรายละเอียดการทานยาแต่ละครั้ง
 
@@ -52,7 +52,7 @@
 - **Local Notifications** - แจ้งเตือนในเครื่อง
 
 
-## 📁 โครงสร้างโปรเจค
+## 📁 ตัวอย่างโครงสร้างโปรเจค
 
 ```
 lib/
@@ -61,6 +61,8 @@ lib/
 │   ├── jwt_api.dart
 │   ├── medication_*.dart
 │   └── reminder_*.dart
+│── assets/
+│   └──app_icon.php         # รูปไอคอน app
 ├── config/                 # การตั้งค่าระบบ
 │   └── api_config.dart
 ├── jwt/                    # JWT authentication
@@ -73,20 +75,17 @@ lib/
 │   ├── medication_page.dart
 │   ├── reminder_page.dart
 │   └── settings_page.dart
-├── services/              # Business logic services
-│   └── reminder_service.dart
 └── widget/                # UI components
     ├── medication/
     ├── reminder/
-    └── common/
 ```
 
 ## 🔧 การติดตั้งและเรียกใช้
 
 ### ความต้องการระบบ
-- Flutter SDK ≥ 3.0.0
-- Dart SDK ≥ 2.18.0
-- iOS 11.0+ / Android API 21+
+- Flutter SDK 3.32.5
+- Dart SDK 3.8.1
+- Android API 21+
 
 ### การติดตั้ง
 
@@ -118,7 +117,7 @@ flutter run
 ## 📱 การใช้งาน
 
 ### การเข้าสู่ระบบ
-1. เปิดแอปและกรอก username/password
+1. เปิดแอปและกรอก email/password
 2. ระบบจะสร้าง JWT token สำหรับยืนยันตัวตน
 3. Token จะถูกจัดเก็บและ refresh อัตโนมัติ
 
@@ -130,7 +129,7 @@ flutter run
 ### การจัดการยา
 1. ไปที่หน้า Medication
 2. เพิ่มยาใหม่พร้อมรูปภาพ
-3. กำหนดรูปแบบยาและหน่วย
+3. กำหนดรูปแบบยาและหน่วยยา
 4. บันทึกข้อมูล
 
 ### การตั้งเวลาแจ้งเตือน
@@ -156,22 +155,6 @@ flutter run
 
 ### การเพิ่มฟีเจอร์ใหม่
 1. สร้าง API service ใน `/api`
-2. เพิ่ม business logic ใน `/services`
-3. สร้าง UI widgets ใน `/widget`
-4. เพิ่มหน้าจอใหม่ใน `/page`
+2. สร้าง UI widgets ใน `/widget`
+3. เพิ่มหน้าจอใหม่ใน `/page`
 
-### การ Debug
-- ใช้ `debugPrint()` สำหรับ log
-- ตรวจสอบ API calls ใน console
-- ใช้ Flutter Inspector สำหรับ UI debugging
-
-## 📞 การสนับสนุน
-
-หากพบปัญหาหรือต้องการความช่วยเหลือ:
-- ตรวจสอบ logs ในส่วนของ API calls
-- ดู error messages ใน debug console
-- ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต
-
-## 📄 License
-
-This project is proprietary software. All rights reserved.
