@@ -44,8 +44,8 @@ class ApiConfig {
   // ==================== Reminder APIs ====================
   static String get getReminderUrl => '$_baseUrl/reminders';
   static String get getReminderSlotsUrl => '$_baseUrl/reminders/slots';
-  static String get postReminderSlotsUrl => '$_baseUrl/reminders/slots';  // POST ใช้ endpoint เดียวกัน
-  static String get getReminderLinksUrl => '$_baseUrl/reminders/links';   // ✅ แก้แล้ว: ตรงกับ Router
+  static String get postReminderSlotsUrl => '$_baseUrl/reminders/slots';  
+  static String get getReminderLinksUrl => '$_baseUrl/reminders/links';  
   static String get updateReminderStatusUrl => '$_baseUrl/reminders/status';
   static String get updateReminderUrl => '$_baseUrl/reminders/update';
   
@@ -134,12 +134,12 @@ class ApiConfig {
   
   /// แมป endpoints ตาม Router structure จริง
   static const Map<String, List<String>> endpointMapping = {
-    'auth': ['login', 'register', 'refresh'],                                           // ✅ ลบ username ออก  
+    'auth': ['login', 'register', 'refresh'],                                        
     'medications': ['index', 'create', 'show/{id}', 'edit/{id}', 'update/{id}', 'delete/{id}', 'timings/{id}'],
-    'reminders': ['index', 'slots', 'links', 'status'],     // ✅ แก้ไข: ลบ history ออก
-    'history': ['index', 'show/{id}'],                      // ✅ เพิ่ม: history แยกต่างหาก
+    'reminders': ['index', 'slots', 'links', 'status'],   
+    'history': ['index', 'show/{id}'],                     
     'settings': ['index', 'volume'],
-    'devices': ['connect', 'username'],                                                 // ✅ username อยู่ที่ devices
+    'devices': ['connect', 'username'],                                                
     'dosage-forms': ['index'],
   };
 
