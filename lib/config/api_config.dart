@@ -1,6 +1,5 @@
 // ไฟล์: lib/config/api_config.dart
 /// คลาสสำหรับจัดการ configuration ของ API endpoints ทั้งหมด
-/// ✅ แก้ให้ตรงกับโครงสร้างไฟล์จริงทั้งหมด
 class ApiConfig {
   // Base URL หลักของ API
   static const String _baseUrl = 'YOUR_API_BASE_URL';
@@ -51,7 +50,7 @@ class ApiConfig {
   static String get updateReminderUrl => '$_baseUrl/reminders/update';
   
   // ==================== History APIs ====================
-  // ✅ แก้ไข: เปลี่ยนจาก /reminders/history เป็น /history
+
   static String get getReminderHistoryUrl => '$_baseUrl/history';
   static String getReminderHistoryDetailUrl(String historyId) => '$_baseUrl/history/$historyId';
   static String get getSummaryUrl => '$_baseUrl/history/summary';
@@ -68,13 +67,13 @@ class ApiConfig {
   static String get postMedicationCreateUrl => createMedicationUrl;
   
   // Reminder legacy mappings  
-  static String get getMedicationLinksUrl => getReminderLinksUrl;  // ✅ แก้แล้ว: ชี้ไป reminders/links
+  static String get getMedicationLinksUrl => getReminderLinksUrl;  
   static String get getSlotReminderUrl => getReminderSlotsUrl;
   static String get postSlotReminderUrl => postReminderSlotsUrl;
   static String get updateAppStatusUrl => updateReminderStatusUrl;
 
   // Auth legacy mappings
-  static String get updateUsernameUrl => updateDeviceUsernameUrl;  // ✅ แก้แล้ว: ใช้ devices/username
+  static String get updateUsernameUrl => updateDeviceUsernameUrl; 
 
   // ==================== Helper Methods ====================
   

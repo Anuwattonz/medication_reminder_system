@@ -21,8 +21,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.CareReminder" // ชื่อ package แอป
-        minSdk = 21 // ✅ กำหนด minSdk เป็น 21 เพื่อรองรับ Android ML Kit
-        targetSdk = 35 // ✅ กำหนด targetSdk เป็น 33 เช่นเดียวกับ compileSdk
+        minSdk = 21 //  กำหนด minSdk เป็น 21 เพื่อรองรับ Android ML Kit
+        targetSdk = 35 //  กำหนด targetSdk เป็น 33 เช่นเดียวกับ compileSdk
         versionCode = 1
         versionName = "1.0"
     }
@@ -42,5 +42,5 @@ flutter {
 
 dependencies {
     // ใส่ dependencies ที่ใช้งานอื่น ๆ ของโปรเจคที่นี่
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4") // ✅ เปิดใช้งาน desugaring library
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4") //  เปิดใช้งาน desugaring library
 }

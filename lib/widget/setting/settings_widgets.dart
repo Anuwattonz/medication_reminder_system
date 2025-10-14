@@ -19,12 +19,12 @@ void _showEditUsernameDialog(BuildContext context) {
   if (isLoading) return; // ป้องกันไม่ให้เปิด dialog ขณะ loading
 
   final TextEditingController controller = TextEditingController(text: username);
-  final FocusNode focusNode = FocusNode(); // ✅ เพิ่ม FocusNode
-  bool isKeyboardVisible = false; // ✅ ตัวแปรติดตาม keyboard
+  final FocusNode focusNode = FocusNode(); // เพิ่ม FocusNode
+  bool isKeyboardVisible = false; // ตัวแปรติดตาม keyboard
   
   showDialog(
     context: context,
-    barrierDismissible: false, // ✅ ปิดการปิด dialog อัตโนมัติ เพื่อให้เราจัดการเอง
+    barrierDismissible: false, // ปิดการปิด dialog อัตโนมัติ เพื่อให้เราจัดการเอง
     builder: (BuildContext dialogContext) {
       return StatefulBuilder(
         builder: (context, setState) {
@@ -44,22 +44,22 @@ void _showEditUsernameDialog(BuildContext context) {
               }
             },
             child: GestureDetector(
-              // ✅ จัดการการกดข้างนอก dialog
+              // จัดการการกดข้างนอก dialog
               onTap: () {
                 if (isKeyboardVisible) {
                   // ถ้ามี keyboard ให้ปิด keyboard ก่อน (ไม่ปิด dialog)
                   focusNode.unfocus();
-                  // ✅ ไม่เรียก Navigator.pop() ที่นี่
+                  // ไม่เรียก Navigator.pop() ที่นี่
                 } else {
                   // ถ้าไม่มี keyboard ให้ปิด dialog
-                  focusNode.dispose(); // ✅ ทำความสะอาด
+                  focusNode.dispose(); //  ทำความสะอาด
                   Navigator.of(dialogContext).pop();
                 }
               },
               child: Container(
                 color: Colors.transparent,
                 child: GestureDetector(
-                  // ✅ เพิ่ม GestureDetector สำหรับ dialog เพื่อไม่ให้ onTap ด้านบนทำงาน
+                  // เพิ่ม GestureDetector สำหรับ dialog เพื่อไม่ให้ onTap ด้านบนทำงาน
                   onTap: () {
                     // ถ้ากดใน dialog ให้ปิดแค่ keyboard
                     if (isKeyboardVisible) {
@@ -88,7 +88,7 @@ void _showEditUsernameDialog(BuildContext context) {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        // ✅ เพิ่มปุ่ม X เพื่อปิด dialog
+                        //  เพิ่มปุ่ม X เพื่อปิด dialog
                         const Spacer(),
                         IconButton(
                           icon: const Icon(Icons.close, color: Colors.grey),
@@ -122,10 +122,10 @@ void _showEditUsernameDialog(BuildContext context) {
                           ),
                           child: TextField(
                             controller: controller,
-                            focusNode: focusNode, // ✅ ใช้ FocusNode
-                            autofocus: false, // ✅ เปลี่ยนเป็น false เพื่อไม่ให้ขึ้น keyboard ทันที
+                            focusNode: focusNode, // ใช้ FocusNode
+                            autofocus: false, //  เปลี่ยนเป็น false เพื่อไม่ให้ขึ้น keyboard ทันที
                             style: const TextStyle(fontSize: 16),
-                            // ✅ เพิ่ม textInputAction และ onSubmitted
+                            //  เพิ่ม textInputAction และ onSubmitted
                             textInputAction: TextInputAction.done,
                             onSubmitted: (value) {
                               // เมื่อกด Done บน keyboard จะทำการบันทึก
@@ -150,7 +150,7 @@ void _showEditUsernameDialog(BuildContext context) {
                     actions: [
                       TextButton(
                         onPressed: () {
-                          focusNode.unfocus(); // ✅ ปิด keyboard ก่อน
+                          focusNode.unfocus(); // ปิด keyboard ก่อน
                           focusNode.dispose(); // ทำความสะอาด
                           Navigator.of(dialogContext).pop(); // ปิด dialog
                         },
@@ -171,7 +171,7 @@ void _showEditUsernameDialog(BuildContext context) {
                             if (newUsername.isNotEmpty && newUsername != username) {
                               onUsernameChanged?.call(newUsername);
                             }
-                            focusNode.unfocus(); // ✅ ปิด keyboard ก่อน
+                            focusNode.unfocus(); // ปิด keyboard ก่อน
                             focusNode.dispose(); // ทำความสะอาด
                             Navigator.of(dialogContext).pop(); // ปิด dialog
                           },
@@ -340,7 +340,7 @@ void _showEditUsernameDialog(BuildContext context) {
                             color: Colors.black87,
                           ),
                           maxLines: 1, // ✅ จำกัด 1 บรรทัด
-                          overflow: TextOverflow.ellipsis, // ✅ แสดง ... เมื่อยาว
+                          overflow: TextOverflow.ellipsis, // แสดง ... เมื่อยาว
                         ),
                       ],
                     ),

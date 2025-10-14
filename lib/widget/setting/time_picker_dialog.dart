@@ -10,12 +10,12 @@ Future<void> showTimePickerDialog({
   required Function(int, int, int) onConfirm,
 }) async {
   
-  // ✅ กำหนดขีดจำกัดต่ำสุดตาม title
+  //  กำหนดขีดจำกัดต่ำสุดตาม title
   Map<String, int> minLimits = _getMinLimits(title);
   int minMinutes = minLimits['minutes']!;
   int minSeconds = minLimits['seconds']!;
   
-  // ✅ ตรวจสอบค่าเริ่มต้นให้อยู่ในขีดจำกัด
+  //  ตรวจสอบค่าเริ่มต้นให้อยู่ในขีดจำกัด
   int tempMinutes = initialMinutes;
   int tempSeconds = initialSeconds;
   
@@ -113,7 +113,7 @@ Future<void> showTimePickerDialog({
   );
 }
 
-// ✅ ฟังก์ชันกำหนดขีดจำกัดต่ำสุดตาม title
+//  ฟังก์ชันกำหนดขีดจำกัดต่ำสุดตาม title
 Map<String, int> _getMinLimits(String title) {
   if (title.contains('แจ้งเตือนติดต่อเป็นเวลา')) {
     return {'minutes': 1, 'seconds': 0}; // ต่ำสุด 1 นาที
@@ -124,7 +124,7 @@ Map<String, int> _getMinLimits(String title) {
   }
 }
 
-// ✅ ฟังก์ชันตรวจสอบว่าเวลาที่เลือกถูกต้องหรือไม่
+//  ฟังก์ชันตรวจสอบว่าเวลาที่เลือกถูกต้องหรือไม่
 bool _isValidTime(int minutes, int seconds, int minMinutes, int minSeconds) {
   if (minutes > minMinutes) return true;
   if (minutes == minMinutes && seconds >= minSeconds) return true;
@@ -152,12 +152,12 @@ Widget _buildTimeDisplay(int minutes, int seconds) {
   );
 }
 
-// ✅ Widget สำหรับ Time Wheel - เพิ่ม minValue
+// Widget สำหรับ Time Wheel - เพิ่ม minValue
 Widget _buildTimeWheel({
   required String label,
   required int maxValue,
   required int currentValue,
-  required int minValue, // ✅ เพิ่ม parameter
+  required int minValue, //  เพิ่ม parameter
   required Function(int) onChanged,
 }) {
   return Expanded(
@@ -173,16 +173,16 @@ Widget _buildTimeWheel({
             itemExtent: 40,
             diameterRatio: 1.2,
             controller: FixedExtentScrollController(
-              initialItem: currentValue - minValue, // ✅ ปรับตำแหน่งเริ่มต้น
+              initialItem: currentValue - minValue, //  ปรับตำแหน่งเริ่มต้น
             ),
             physics: const FixedExtentScrollPhysics(),
             onSelectedItemChanged: (index) {
-              onChanged(index + minValue); // ✅ บวก minValue กลับ
+              onChanged(index + minValue); //  บวก minValue กลับ
             },
             childDelegate: ListWheelChildBuilderDelegate(
-              childCount: maxValue - minValue, // ✅ จำนวนรายการลดลง
+              childCount: maxValue - minValue, //  จำนวนรายการลดลง
               builder: (context, index) {
-                final actualValue = index + minValue; // ✅ ค่าจริง
+                final actualValue = index + minValue; //  ค่าจริง
                 return Center(
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),

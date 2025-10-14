@@ -34,17 +34,17 @@ class SummaryApi {
         queryParams
       );
 
-      debugPrint('🌐 [SUMMARY_API] Request URL: $url');
-      debugPrint('📋 [SUMMARY_API] Parameters: period=$period, start=$startDate, end=$endDate');
+      debugPrint('[SUMMARY_API] Request URL: $url');
+      debugPrint('[SUMMARY_API] Parameters: period=$period, start=$startDate, end=$endDate');
 
       final response = await ApiHelper.getWithTokenHandling(url);
 
-      debugPrint('📨 [SUMMARY_API] Response Status: ${response.statusCode}');
-      debugPrint('📝 [SUMMARY_API] Response Body: ${response.body.length > 500 ? '${response.body.substring(0, 500)}...' : response.body}');
+      debugPrint('[SUMMARY_API] Response Status: ${response.statusCode}');
+      debugPrint('[SUMMARY_API] Response Body: ${response.body.length > 500 ? '${response.body.substring(0, 500)}...' : response.body}');
 
       return _buildResponse(response.statusCode, response.body);
     } catch (e) {
-      debugPrint('❌ [SUMMARY_API] Exception: $e');
+      debugPrint('[SUMMARY_API] Exception: $e');
       throw Exception(_handleError(e));
     }
   }
@@ -54,13 +54,13 @@ class SummaryApi {
     try {
       final jsonData = json.decode(body);
       
-      debugPrint('✅ [SUMMARY_API] JSON Parse Success');
-      debugPrint('📊 [SUMMARY_API] Response Data: status=${jsonData['status']}, message=${jsonData['message']}');
+      debugPrint(' [SUMMARY_API] JSON Parse Success');
+      debugPrint(' [SUMMARY_API] Response Data: status=${jsonData['status']}, message=${jsonData['message']}');
       
       // ตรวจสอบ summary data ถ้ามี
       if (jsonData['data'] != null && jsonData['data']['summary'] != null) {
         final summary = jsonData['data']['summary'];
-        debugPrint('📈 [SUMMARY_API] Summary: total=${summary['total_reminders']}, taken=${summary['taken_count']}, rate=${summary['compliance_rate']}%');
+        debugPrint(' [SUMMARY_API] Summary: total=${summary['total_reminders']}, taken=${summary['taken_count']}, rate=${summary['compliance_rate']}%');
       }
       
       return {
@@ -71,8 +71,8 @@ class SummaryApi {
         'rawBody': body,
       };
     } catch (e) {
-      debugPrint('❌ [SUMMARY_API] JSON Parse Error: $e');
-      debugPrint('📝 [SUMMARY_API] Raw Body: $body');
+      debugPrint(' [SUMMARY_API] JSON Parse Error: $e');
+      debugPrint(' [SUMMARY_API] Raw Body: $body');
       
       return {
         'statusCode': statusCode,
