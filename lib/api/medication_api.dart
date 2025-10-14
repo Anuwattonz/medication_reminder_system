@@ -25,7 +25,7 @@ class MedicationApi {
     dynamic imageFile,
   }) async {
     try {
-      // ✅ ลบ medication_id จาก fields (อยู่ใน URL แล้ว)
+
       Map<String, String> fields = {
         'medication_name': medicationName,
         'medication_nickname': medicationNickname.isEmpty ? '-' : medicationNickname,
@@ -34,7 +34,7 @@ class MedicationApi {
         'unit_type_id': unitTypeId,
       };
 
-      // ✅ ใช้ RESTful URL
+
       final url = ApiConfig.updateMedicationUrl(medicationId);
 
       final streamedResponse = await ApiHelper.multipartWithTokenHandling(
@@ -57,10 +57,10 @@ class MedicationApi {
     bool forceDelete = false,
   }) async {
     try {
-      // ✅ ใช้ RESTful URL
+    
       final url = ApiConfig.deleteMedicationUrl(medicationId);
       
-      // ✅ ลบ medication_id จาก body (อยู่ใน URL แล้ว)
+ 
       final requestData = {
         'force_delete': forceDelete,
       };
