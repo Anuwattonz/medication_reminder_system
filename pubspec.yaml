@@ -31,7 +31,6 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "lib/assets/app_icon.png"  # ไฟล์ไอคอนของคุณ
-  min_sdk_android: 21
 
 flutter:
   uses-material-design: true
